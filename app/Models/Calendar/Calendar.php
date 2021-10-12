@@ -8,12 +8,12 @@ use DateTime;
 class Calendar
 {
     protected array $special_dates;
-    protected string $class_namespace;
+    protected string $classes_namespace;
 
-    public function __construct($class_namespace = 'App\\Models\\WeekdayStrategy\\')
+    public function __construct($classes_namespace = 'App\\Models\\WeekdayStrategy\\')
     {
         $this->special_dates = [];
-        $this->class_namespace = $class_namespace;
+        $this->classes_namespace = $classes_namespace;
     }
 
     /**
@@ -32,7 +32,7 @@ class Calendar
         }
 
         $weekday = $date->format('l');
-        $class =  $this->class_namespace . $weekday;
+        $class =  $this->classes_namespace . $weekday;
         return new $class($date);
     }
 
