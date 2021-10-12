@@ -30,7 +30,7 @@ class Calendar
         }
 
         $weekday = $date->format('l');
-        $class = 'App\\Models\\Weekdays\\' . $weekday;
+        $class = 'App\\Models\\WeekdayStrategy\\' . $weekday;
         return new $class($date);
     }
 
@@ -41,9 +41,17 @@ class Calendar
      * 
      * @return Calendar own instance
      */
-    public function addSpecialDate(SpecialDate $special_date)
+    public function addSpecialDate(SpecialDate $new_special_date)
     {
-        $this->special_dates[] = $special_date;
+        foreach ($this->special_dates as $special_date) {
+            if ($special_date->getDate() == $new_special_date->getDate()) {
+                $special_date->addSpecialDate($new_special_date);
+                
+                return $this;
+            }
+        }
+        
+        $this->special_dates[] = $new_special_date;
 
         return $this;
     }
@@ -58,7 +66,7 @@ class Calendar
     private function findSpecialDate(Datetime $date)
     {
         foreach ($this->special_dates as $special_date) {
-            if ($date->format('Y-m-d') === $special_date->getDate()) {
+            if ($date == $special_date->getDate()) {
                 return $special_date;
             }
         }
