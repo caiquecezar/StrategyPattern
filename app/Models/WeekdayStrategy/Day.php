@@ -20,6 +20,6 @@ class Day
      */
     public function getDate()
     {
-        return $this->date->format('Y-m-d');
+        return $this->date;
     }
 }

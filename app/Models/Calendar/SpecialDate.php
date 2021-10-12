@@ -3,38 +3,29 @@
 namespace App\Models\Calendar;
 
 use App\Interfaces\Weekday;
+use App\Models\WeekdayStrategy\Day;
 use DateTime;
 
-class SpecialDate implements Weekday
+class SpecialDate extends Day implements Weekday
 {
-    protected Datetime $date;
     protected Weekday $weekday;
     protected string $message;
     protected ?SpecialDate $next_special_date;
 
-    public function __construct(Datetime $date, string $message)
+    public function __construct(DateTime $date, string $message, string $class_namespace = 'App\\Models\\WeekdayStrategy\\')
     {
+        parent::__construct($date);
+
         $this->next_special_date = null;
-        $this->date = $date;
         $this->message = $message;
 
         $weekday = $date->format('l');
-        $class = 'App\\Models\\WeekdayStrategy\\' . $weekday;
+        $class = $class_namespace . $weekday;
         $this->weekday = new $class($date);
     }
 
     /**
-     * Date getter
-     * 
-     * @return string date in format Y-m-d
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Function to add message
+     * Function to add special date in list
      * 
      * @param SpecialDate $special_date
      * 
@@ -56,13 +47,13 @@ class SpecialDate implements Weekday
      * 
      * @return string all messages
      */
-    public function getAllMessages()
+    public function getAllSpecialDatesMessages()
     {
         if ($this->next_special_date == null) {
             return $this->message . PHP_EOL;
         }
 
-        return $this->message . PHP_EOL . $this->next_special_date->getAllMessages();
+        return $this->message . PHP_EOL . $this->next_special_date->getAllSpecialDatesMessages();
     }
 
     /**
@@ -72,7 +63,7 @@ class SpecialDate implements Weekday
      */
     public function message()
     {
-        $final_message = $this->weekday->message() . $this->getAllMessages();
+        $final_message = $this->weekday->message() . $this->getAllSpecialDatesMessages();
 
         return $final_message;
     }
