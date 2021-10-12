@@ -1,6 +1,12 @@
 # StrategyPattern
 
 Esse repositório faz parte do teste para vaga de desenvolvedor PHP da MOVA.
+## Dependencias
+
+Para este projeto é necessário possuir em sua máquina:
+
+1. [PHP](https://www.php.net/manual/pt_BR/install.php)
+2. [Composer](https://getcomposer.org/download/)
 
 ## Como usar
 
@@ -11,7 +17,7 @@ Para rodar esse projeto no seu computador, deve seguir os seguintes passos:
 
 ## Testes
 
-Para executar os teste, ainda no diretório do projeto, execute o comando `vendor/bin/phpunit testes`.
+Para executar os teste, ainda no diretório do projeto, execute o comando `vendor/bin/phpunit tests`.
 
 ## Codifique livremente
 
