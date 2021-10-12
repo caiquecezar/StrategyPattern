@@ -138,7 +138,7 @@ trait ProvidersTrait
                         ]
                     ],
                     'results' => [
-                        'class' => 'App\Models\Calendar\SpecialDate',
+                        'class' => 'App\Models\WeekdayStrategy\Saturday',
                         'day' => 'sábado',
                         'special_messages' => [
                             'Feliz Natal!',
@@ -190,7 +190,7 @@ trait ProvidersTrait
                         ]
                     ],
                     'results' => [
-                        'class' => 'App\Models\Calendar\SpecialDate',
+                        'class' => 'App\Models\WeekdayStrategy\Saturday',
                         'day' => 'sábado',
                         'special_messages' => [
                             'Feliz Natal!',
@@ -225,7 +225,7 @@ trait ProvidersTrait
                         ],
                     ],
                     'results' => [
-                        'class' => 'App\Models\Calendar\SpecialDate',
+                        'class' => 'App\Models\WeekdayStrategy\Friday',
                         'day' => 'sexta-feira',
                         'special_messages' => [
                             'Feliz dia de São João!',

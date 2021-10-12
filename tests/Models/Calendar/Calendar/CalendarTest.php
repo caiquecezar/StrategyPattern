@@ -23,15 +23,16 @@ class CalendarTest extends TestCase
     {
         $calendar = new Calendar();
 
-        $date = DateTime::createFromFormat(
+        $datetime = DateTime::createFromFormat(
             $data_provider['date']['format'],
             $data_provider['date']['date']
         );
-        $weekday = $calendar->getWeekday($date);
-        $message = $weekday->message();
+        $date = $calendar->getWeekday($datetime);
+        $weekday = $date->getWeekday();
+        $weekday_message = $weekday->message();
         
         $this->assertInstanceOf($data_provider['results']['class'], $weekday);
-        $this->assertStringContainsString($data_provider['results']['day'], $message);
+        $this->assertStringContainsString($data_provider['results']['day'], $weekday_message);
     }
 
     /**
@@ -43,19 +44,22 @@ class CalendarTest extends TestCase
 
         $this->addSpecialDates($calendar, $data_provider);
 
-        $date = DateTime::createFromFormat(
+        $datetime = DateTime::createFromFormat(
             $data_provider['date_format'],
             $data_provider['date']
         );
-        $weekday = $calendar->getWeekday($date);
-        $message = $weekday->message();
+        $date = $calendar->getWeekday($datetime);
+        $date_message = $date->message();
+
+        $weekday = $date->getWeekday();
+        $weekday_message = $weekday->message();
 
         $this->assertInstanceOf($data_provider['results']['class'], $weekday);
-        $this->assertStringContainsString($data_provider['results']['day'], $message);
+        $this->assertStringContainsString($data_provider['results']['day'], $weekday_message);
 
         if($data_provider['results']['special_messages'] != null) {
             foreach ($data_provider['results']['special_messages'] as $special_message) {
-                $this->assertStringContainsString($special_message, $message);
+                $this->assertStringContainsString($special_message, $date_message);
             }
         }
     }
