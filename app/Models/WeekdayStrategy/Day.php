@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Weekdays;
+namespace App\Models\WeekdayStrategy;
 
 use DateTime;
 

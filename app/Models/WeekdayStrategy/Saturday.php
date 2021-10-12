@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Weekdays;
+namespace App\Models\WeekdayStrategy;
 
 use App\Interfaces\Weekday;
-use App\Models\Weekdays\Day;
+use App\Models\WeekdayStrategy\Day;
 use DateTime;
 
-class Friday extends Day implements Weekday
+class Saturday extends Day implements Weekday
 {
     public function __construct(DateTime $date)
     {
@@ -15,6 +15,6 @@ class Friday extends Day implements Weekday
 
     public function message()
     {
-        return $this->date->format('Y-m-d') . ' - É sexta-feira.' . PHP_EOL;
+        return $this->date->format('Y-m-d') . ' - É sábado.' . PHP_EOL;
     }
 }

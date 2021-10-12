@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Weekdays;
+namespace App\Models\WeekdayStrategy;
 
 use App\Interfaces\Weekday;
-use App\Models\Weekdays\Day;
+use App\Models\WeekdayStrategy\Day;
 use DateTime;
 
 class Tuesday extends Day implements Weekday
