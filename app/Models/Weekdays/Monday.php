@@ -2,12 +2,19 @@
 
 namespace App\Models\Weekdays;
 
-use App\Interfaces\Weekdays\Weekdays;
+use App\Interfaces\Weekday;
+use App\Models\Weekdays\Day;
+use DateTime;
 
-class Monday implements Weekdays
+class Monday extends Day implements Weekday
 {
+    public function __construct(DateTime $date)
+    {
+        parent::__construct($date);
+    }
+
     public function message()
     {
-        return 'Hoje é segunda-feira.';
+        return $this->date->format('Y-m-d') . ' - É segunda-feira.' . PHP_EOL;
     }
 }
