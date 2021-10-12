@@ -51,6 +51,11 @@ class SpecialDate implements Weekday
         return $this;
     }
 
+    /**
+     * Function to get all Messages from special date
+     * 
+     * @return string all messages
+     */
     public function getAllMessages()
     {
         if ($this->next_special_date == null) {
@@ -60,6 +65,11 @@ class SpecialDate implements Weekday
         return $this->message . PHP_EOL . $this->next_special_date->getAllMessages();
     }
 
+    /**
+     * Function to get message from date
+     * 
+     * @return string all messages with weekday message in headline
+     */
     public function message()
     {
         $final_message = $this->weekday->message() . $this->getAllMessages();
