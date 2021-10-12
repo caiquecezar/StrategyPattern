@@ -3,7 +3,7 @@
 namespace App\Models\WeekdayStrategy;
 
 use App\Interfaces\Weekday;
-use App\Models\WeekdayStrategy\Day;
+use App\Models\Day;
 use DateTime;
 
 class Sunday extends Day implements Weekday

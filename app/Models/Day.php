@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\WeekdayStrategy;
+namespace App\Models;
 
 use DateTime;
 
@@ -16,7 +16,7 @@ class Day
     /**
      * Date getter
      * 
-     * @return string date in format Y-m-d
+     * @return Datetime date in format Y-m-d
      */
     public function getDate()
     {
