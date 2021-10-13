@@ -18,9 +18,9 @@ $special_date = new SpecialDate($date, 'Um dia muito especial.');
 $calendar->addSpecialDate($special_date);
 
 $current_date = new DateTime('now');
-$weekday = $calendar->getWeekday($current_date);
+$weekday = $calendar->getDate($current_date);
 echo $weekday->message() . PHP_EOL;
 
 $special_date = DateTime::createFromFormat('Y-m-d', '2018-01-21');
-$weekday = $calendar->getWeekday($special_date);
+$weekday = $calendar->getDate($special_date);
 echo $weekday->message() . PHP_EOL;

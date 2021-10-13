@@ -2,28 +2,25 @@
 
 namespace App\Models\Calendar;
 
-use App\Interfaces\Weekday;
 use DateTime;
 
 class Calendar
 {
     protected array $special_dates;
-    protected string $classes_namespace;
 
-    public function __construct($classes_namespace = 'App\\Models\\WeekdayStrategy\\')
+    public function __construct()
     {
         $this->special_dates = [];
-        $this->classes_namespace = $classes_namespace;
     }
 
     /**
-     * Function to get a weekday according with date
+     * Function to get a date according with datetime
      * 
-     * @param Datetime $date
+     * @param Datetime $datetime
      * 
      * @return Date
      */
-    public function getWeekday(Datetime $datetime)
+    public function getDate(Datetime $datetime)
     {
         $date = new Date($datetime);
 

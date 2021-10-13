@@ -5,20 +5,21 @@ namespace App\Models\Calendar;
 use App\Interfaces\Weekday;
 use App\Models\Day;
 use DateTime;
+use App\Constants\Namespaces;
 
 class Date extends Day
 {
     protected Weekday $weekday;
     protected array $special_dates;
 
-    public function __construct(DateTime $date, string $class_namespace = 'App\\Models\\WeekdayStrategy\\')
+    public function __construct(DateTime $date)
     {
         parent::__construct($date);
 
         $this->special_dates = [];
 
         $weekday = $date->format('l');
-        $class = $class_namespace . $weekday;
+        $class = Namespaces::WEEKDAYS . $weekday;
 
         $this->weekday = new $class($date);
     }

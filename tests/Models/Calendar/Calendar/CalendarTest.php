@@ -27,7 +27,7 @@ class CalendarTest extends TestCase
             $data_provider['date']['format'],
             $data_provider['date']['date']
         );
-        $date = $calendar->getWeekday($datetime);
+        $date = $calendar->getDate($datetime);
         $weekday = $date->getWeekday();
         $weekday_message = $weekday->message();
         
@@ -48,7 +48,7 @@ class CalendarTest extends TestCase
             $data_provider['date_format'],
             $data_provider['date']
         );
-        $date = $calendar->getWeekday($datetime);
+        $date = $calendar->getDate($datetime);
         $date_message = $date->message();
 
         $weekday = $date->getWeekday();
