@@ -2,10 +2,11 @@
 
 namespace App\Models\Calendar;
 
+use App\Constants\Namespaces;
 use App\Interfaces\Weekday;
 use App\Models\Day;
 use DateTime;
-use App\Constants\Namespaces;
+
 
 class Date extends Day
 {

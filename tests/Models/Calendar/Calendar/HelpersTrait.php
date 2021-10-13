@@ -5,16 +5,15 @@ namespace Tests\Models\Calendar\Calendar;
 use App\Models\Calendar\Calendar;
 use App\Models\Calendar\SpecialDate;
 use DateTime;
-use phpDocumentor\Reflection\Types\Boolean;
 
 trait HelpersTrait
 {
     /**
      * Function do add special dates to calendar
-     * 
+     *
      * @param Calendar $calendar
      * @param array $data_provider provider with special dates data
-     * 
+     *
      * @return Calendar
      */
     private function addSpecialDates(Calendar $calendar, array $data_provider): Calendar
@@ -37,7 +36,7 @@ trait HelpersTrait
 
     /**
      * Method to verify if the date of the test is a special date
-     * 
+     *
      * @return bool
      */
     private function isSpecialDate(array $data_provider): bool

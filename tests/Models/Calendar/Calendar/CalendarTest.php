@@ -19,7 +19,7 @@ class CalendarTest extends TestCase
     /**
      * Test if a date is returning correct type and message of a weekday
      * and, if is a special day, all special messages
-     * 
+     *
      * @dataProvider allWeekdays
      * @dataProvider withSpecialDates
      */
