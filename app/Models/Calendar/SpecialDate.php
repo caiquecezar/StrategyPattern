@@ -2,7 +2,6 @@
 
 namespace App\Models\Calendar;
 
-use App\Interfaces\Weekday;
 use App\Models\Day;
 use DateTime;
 
@@ -10,6 +9,9 @@ class SpecialDate extends Day
 {
     protected string $message;
 
+    /**
+     * Constructor method
+     */
     public function __construct(DateTime $date, string $message)
     {
         parent::__construct($date);
@@ -19,10 +21,10 @@ class SpecialDate extends Day
 
     /**
      * Message getter
-     * 
+     *
      * @return string message
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }

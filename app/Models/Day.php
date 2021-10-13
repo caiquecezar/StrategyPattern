@@ -8,6 +8,9 @@ class Day
 {
     protected Datetime $date;
 
+    /**
+     * Constructor method
+     */
     public function __construct(Datetime $date)
     {
         $this->date = $date;
@@ -15,10 +18,10 @@ class Day
 
     /**
      * Date getter
-     * 
+     *
      * @return Datetime date in format Y-m-d
      */
-    public function getDate()
+    public function getDate(): DateTime
     {
         return $this->date;
     }

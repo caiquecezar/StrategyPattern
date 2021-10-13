@@ -12,26 +12,29 @@ class Date extends Day
     protected Weekday $weekday;
     protected array $special_dates;
 
+    /**
+     * Constructor method
+     */
     public function __construct(DateTime $date)
     {
         parent::__construct($date);
 
         $this->special_dates = [];
 
-        $weekday = $date->format('l');
-        $class = Namespaces::WEEKDAYS . $weekday;
+        $weekday_name = $date->format('l');
+        $class = Namespaces::WEEKDAYS . $weekday_name;
 
         $this->weekday = new $class($date);
     }
 
     /**
-     * Function to add special date in list
-     * 
+     * Function to add special date in special dates list
+     *
      * @param SpecialDate $special_date
-     * 
-     * @return Date own instance
+     *
+     * @return Date self instance
      */
-    public function addSpecialDate(SpecialDate $special_date)
+    public function addSpecialDate(SpecialDate $special_date): Date
     {
         $this->special_dates[] = $special_date;
 
@@ -39,11 +42,11 @@ class Date extends Day
     }
 
     /**
-     * Function to get all Messages from special date
-     * 
+     * Function to get all messages from special dates
+     *
      * @return string all messages
      */
-    public function getAllSpecialDatesMessages()
+    public function getAllSpecialDatesMessages(): string
     {
         $final_message = '';
 
@@ -56,10 +59,10 @@ class Date extends Day
 
     /**
      * Function to get message from date
-     * 
+     *
      * @return string all messages with weekday message in headline
      */
-    public function message()
+    public function message(): string
     {
         $final_message = $this->weekday->message() . $this->getAllSpecialDatesMessages();
 
@@ -68,10 +71,10 @@ class Date extends Day
 
     /**
      * Weekday getter
-     * 
+     *
      * @return Weekday
      */
-    public function getWeekday()
+    public function getWeekday(): Weekday
     {
         return $this->weekday;
     }
