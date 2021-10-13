@@ -4,89 +4,82 @@ namespace Tests\Models\Calendar\Calendar;
 
 trait ProvidersTrait
 {
-    public function allWeekdays()
+    public function allWeekdays(): array
     {
         return [
-            'Date is Sunday' => [
+            'Is Sunday' => [
                 [
-                    'date' => [
-                        'format' => 'Y-m-d',
-                        'date' => '2021-10-10'
-                    ],
+                    'date_format' => 'Y-m-d',
+                    'date' => '2021-10-10',
+                    'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Sunday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Sunday',
                         'day' => 'domingo'
                     ]
                 ]
             ],
-            'Date is Monday' => [
+            'Is Monday' => [
                 [
-                    'date' => [
-                        'format' => 'Y-m-d',
-                        'date' => '2021-10-11'
-                    ],
+                    'date_format' => 'Y-m-d',
+                    'date' => '2021-10-11',
+                    'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Monday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Monday',
                         'day' => 'segunda-feira'
                     ]
                 ]
             ],
-            'Date is Tuesday' => [
+            'Is Tuesday' => [
                 [
-                    'date' => [
-                        'format' => 'Y-m-d',
-                        'date' => '2021-10-12'
-                    ],
+                    'date_format' => 'Y-m-d',
+                    'date' => '2021-10-12',
+                    'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Tuesday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Tuesday',
                         'day' => 'terça-feira'
                     ]
                 ]
             ],
-            'Date is Wednesday' => [
+            'Is Wednesday' => [
                 [
-                    'date' => [
-                        'format' => 'Y-m-d',
-                        'date' => '2021-10-13'
-                    ],
+                    'date_format' => 'Y-m-d',
+                    'date' => '2021-10-13',
+                    'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Wednesday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Wednesday',
                         'day' => 'quarta-feira'
                     ]
                 ]
             ],
-            'Date is Thursday' => [
+            'Is Thursday' => [
                 [
-                    'date' => [
-                        'format' => 'Y-m-d',
-                        'date' => '2021-10-14'
-                    ],
+                    'date_format' => 'Y-m-d',
+                    'date' => '2021-10-14',
+                    'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Thursday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Thursday',
                         'day' => 'quinta-feira'
                     ]
                 ]
             ],
-            'Date is Friday' => [
+            'Is Friday' => [
                 [
-                    'date' => [
-                        'format' => 'Y-m-d',
-                        'date' => '2021-10-15'
-                    ],
+                    'date_format' => 'Y-m-d',
+                    'date' => '2021-10-15',
+                    'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Friday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Friday',
                         'day' => 'sexta-feira'
                     ]
                 ]
             ],
-            'Date is Saturday' => [
+            'Is Saturday' => [
                 [
-                    'date' => [
-                        'format' => 'Y-m-d',
-                        'date' => '2021-10-16'
-                    ],
+                    'date_format' => 'Y-m-d',
+                    'date' => '2021-10-16',
+                    'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Saturday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Saturday',
                         'day' => 'sábado'
                     ]
                 ]
@@ -95,7 +88,7 @@ trait ProvidersTrait
         ];
     }
 
-    public function withSpecialDates()
+    public function withSpecialDates(): array
     {
         return [
             'No special dates added' => [
@@ -104,9 +97,8 @@ trait ProvidersTrait
                     'date_format' => 'Y-m-d',
                     'special_dates' => null,
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Saturday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Saturday',
                         'day' => 'sábado',
-                        'special_messages' => null
                     ]
                 ]
             ],
@@ -121,7 +113,7 @@ trait ProvidersTrait
                         ]
                     ],
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Friday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Friday',
                         'day' => 'sexta-feira',
                         'special_messages' => null
                     ]
@@ -138,7 +130,7 @@ trait ProvidersTrait
                         ]
                     ],
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Saturday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Saturday',
                         'day' => 'sábado',
                         'special_messages' => [
                             'Feliz Natal!',
@@ -165,7 +157,7 @@ trait ProvidersTrait
                         ]
                     ],
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Monday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Monday',
                         'day' => 'segunda-feira',
                         'special_messages' => null,
                     ]
@@ -190,7 +182,7 @@ trait ProvidersTrait
                         ]
                     ],
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Saturday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Saturday',
                         'day' => 'sábado',
                         'special_messages' => [
                             'Feliz Natal!',
@@ -225,7 +217,7 @@ trait ProvidersTrait
                         ],
                     ],
                     'results' => [
-                        'class' => 'App\Models\WeekdayStrategy\Friday',
+                        'weekday_class' => 'App\Models\WeekdayStrategy\Friday',
                         'day' => 'sexta-feira',
                         'special_messages' => [
                             'Feliz dia de São João!',

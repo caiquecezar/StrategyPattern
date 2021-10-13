@@ -17,50 +17,39 @@ class CalendarTest extends TestCase
     }
 
     /**
+     * Test if a date is returning correct type and message of a weekday
+     * and, if is a special day, all special messages
+     * 
      * @dataProvider allWeekdays
-     */
-    public function testWeekdayIsCorrect($data_provider)
-    {
-        $calendar = new Calendar();
-
-        $datetime = DateTime::createFromFormat(
-            $data_provider['date']['format'],
-            $data_provider['date']['date']
-        );
-        $date = $calendar->getDate($datetime);
-        $weekday = $date->getWeekday();
-        $weekday_message = $weekday->message();
-        
-        $this->assertInstanceOf($data_provider['results']['class'], $weekday);
-        $this->assertStringContainsString($data_provider['results']['day'], $weekday_message);
-    }
-
-    /**
      * @dataProvider withSpecialDates
      */
-    public function testSpecialDateIsCorrect($data_provider)
+    public function testSpecialDateAndWeekdayIsCorrect(array $data_provider): void
     {
         $calendar = new Calendar();
 
-        $this->addSpecialDates($calendar, $data_provider);
+        $calendar = $this->addSpecialDates($calendar, $data_provider);
 
         $datetime = DateTime::createFromFormat(
             $data_provider['date_format'],
             $data_provider['date']
         );
+
         $date = $calendar->getDate($datetime);
         $date_message = $date->message();
 
         $weekday = $date->getWeekday();
         $weekday_message = $weekday->message();
 
-        $this->assertInstanceOf($data_provider['results']['class'], $weekday);
+        $this->assertInstanceOf($data_provider['results']['weekday_class'], $weekday);
         $this->assertStringContainsString($data_provider['results']['day'], $weekday_message);
+        $this->assertStringContainsString($data_provider['results']['day'], $date_message);
 
-        if($data_provider['results']['special_messages'] != null) {
-            foreach ($data_provider['results']['special_messages'] as $special_message) {
-                $this->assertStringContainsString($special_message, $date_message);
-            }
+        if(!$this->isSpecialDate($data_provider))  {
+            return ;
+        }
+
+        foreach ($data_provider['results']['special_messages'] as $special_message) {
+            $this->assertStringContainsString($special_message, $date_message);
         }
     }
   
